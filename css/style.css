@@ -1,0 +1,167 @@
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    height: 100%;
+  background: linear-gradient(135deg, #ffffff, rgb(209, 230, 255));
+}
+
+h1{
+    font-size: 20px;
+    text-align: end;
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+h2{
+    text-align: center;
+    margin-top: 20px;
+    color: #145aa5;
+}
+
+em{
+    padding-top: 60px;
+    text-align: center;
+    display: block;
+
+}
+
+footer{
+
+    background-color: #145aa5;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    color: #ffffff;
+}
+
+.btn{
+    background-color: #145aa5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.btn:hover{
+    background-color: #ffffff;
+    color: black;
+    transform: scale(1.005);
+    transition: all 0.3s ease;
+}
+
+#eventos {
+    display: flex;
+    flex-wrap: wrap; /* Para que las tarjetas se pasen a la siguiente fila */
+    gap: 20px;       /* Espacio entre tarjetas */
+    justify-content: center;
+}
+
+.card{
+    display: flex; 
+    align-items: center; 
+    gap: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid rgb(209, 230, 255);
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card-formulario {
+    margin-left: auto;
+    margin-right: auto;   
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px; 
+    border: 1px solid #e0e0e0;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #1a5fb4; /* El azul de tu botón */
+}
+
+/* Área de mensaje */
+textarea {
+    height: 100px;
+    resize: vertical; /* Permite al usuario ajustar el alto */
+}
+
+
+.info-evento{
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.card:hover{
+    background-color: #eaf2fc;
+    color: black;
+    transform: scale(1.005);
+    transition: all 0.3s ease;
+}
+
+nav{
+    background-color: #145aa5;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav a:hover {
+  background-color: #e0edfd;
+  color: #145aa5;
+  transform: scale(1.005);
+  transition: all 0.3s ease;
+}
