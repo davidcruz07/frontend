@@ -20,7 +20,8 @@ const eventos = [
       "fecha": "2026-05-08",
       "lugar": "CUM Hermosillo",
       "descripcion": "Disfruta de una noche llena de energía con uno de los mejores artistas de México.",
-      "categoria": "Pop/RnB"
+      "categoria": "Pop/RnB",
+      "precio": "850"
     },
     {
       "id": 12,
@@ -29,7 +30,8 @@ const eventos = [
       "fecha": "2026-09-15",
       "lugar": "CUM Hermosillo",
       "descripcion": "Disfruta de una noche llena de energía con uno de los mejores productores de México.",
-      "categoria": "Pop/RnB"
+      "categoria": "Pop/RnB",
+      "precio": "950"
     },
     {
       "id": 1,
@@ -38,7 +40,8 @@ const eventos = [
       "fecha": "2026-07-15",
       "lugar": "CUM Hermosillo",
       "descripcion": "Disfruta de una noche llena de energía con las mejores bandas de rock.",
-      "categoria": "Rock"
+      "categoria": "Rock",
+      "precio": "1200"
     },
     {
       "id": 2,
@@ -47,7 +50,8 @@ const eventos = [
       "fecha": "2026-05-23",
       "lugar": "CUM Hermosillo",
       "descripcion": "Disfruta de una noche llena de energía con el fenómeno del pop mundial.",
-      "categoria": "Pop"
+      "categoria": "Pop",
+      "precio": "1500"
     },
     {
       "id": 3,
@@ -56,7 +60,8 @@ const eventos = [
       "fecha": "2026-11-07",
       "lugar": "Parque La Ruina",
       "descripcion": "El festival más esperado del noroeste con artistas internacionales.",
-      "categoria": "Festival"
+      "categoria": "Festival",
+      "precio": "2000"
     },
     {
       "id": 4,
@@ -65,7 +70,8 @@ const eventos = [
       "fecha": "2026-03-20",
       "lugar": "Estadio Fernando Valenzuela",
       "descripcion": "El orgullo de Hermosillo regresa a casa con su gira mundial.",
-      "categoria": "Regional"
+      "categoria": "Regional",
+      "precio": "700"
     },
     {
       "id": 5,
@@ -74,7 +80,8 @@ const eventos = [
       "fecha": "2026-09-12",
       "lugar": "CUM Hermosillo",
       "descripcion": "La banda británica presenta su nuevo tour en tierras sonorenses.",
-      "categoria": "Indie Rock"
+      "categoria": "Indie Rock",
+      "precio": "1800"
     },
     {
       "id": 6,
@@ -83,7 +90,8 @@ const eventos = [
       "fecha": "2026-04-15",
       "lugar": "Palenque de la ExpoGan",
       "descripcion": "El rey de los corridos tumbados en el escenario del Palenque.",
-      "categoria": "Corridos Tumbados"
+      "categoria": "Corridos Tumbados",
+      "precio": "900"
     },
     {
       "id": 7,
@@ -92,7 +100,8 @@ const eventos = [
       "fecha": "2026-10-05",
       "lugar": "Auditorio Cívico del Estado",
       "descripcion": "Un viaje psicodélico y acústico con los éxitos de siempre.",
-      "categoria": "Rock Alternativo"
+      "categoria": "Rock Alternativo",
+      "precio": "1300"
     },
     {
       "id": 8,
@@ -101,7 +110,8 @@ const eventos = [
       "fecha": "2026-06-18",
       "lugar": "CUM Hermosillo",
       "descripcion": "La Motomami llega con un espectáculo visual y sonoro sin precedentes.",
-      "categoria": "Urbano/Pop"
+      "categoria": "Urbano/Pop",
+      "precio": "2200"
     },
     {
       "id": 9,
@@ -110,7 +120,8 @@ const eventos = [
       "fecha": "2026-02-14",
       "lugar": "Teatro del Pueblo",
       "descripcion": "Una velada romántica y folk para celebrar el día del amor.",
-      "categoria": "Folk"
+      "categoria": "Folk",
+      "precio": "600"
     },
     {
       "id": 10,
@@ -119,7 +130,8 @@ const eventos = [
       "fecha": "2026-08-22",
       "lugar": "London Pub / La Ruina",
       "descripcion": "Un homenaje a la banda más grande del rock en español.",
-      "categoria": "Tributo"
+      "categoria": "Tributo",
+      "precio": "750"
     }
 ]
 
@@ -139,7 +151,7 @@ function mostrarEventos(lista) {
             <p><strong>Lugar:</strong> ${evento.lugar}</p>
             <p><strong>Fecha:</strong> ${evento.fecha}</p>
             
-            <button class="btn" onclick="comprarBoletos(${evento.id})">Comprar Boletos</button>
+            <button class="btn-comprar" data-id="${evento.id}" data-nombre="${evento.artista}" data-precio="${evento.precio}" onclick="comprarBoletos(${evento.id})">Agregar Boletos</button>
             </section>
         </div>
         `;
@@ -154,18 +166,41 @@ mostrarEventos(eventos);
 function comprarBoletos(idEvento) {
     const eventoSeleccionado = eventos.find(evento => evento.id === idEvento);
 
-    if (eventoSeleccionado) {
-        alert(`Compra exitosa!!! Boleto para ${eventoSeleccionado.artista} en ${eventoSeleccionado.lugar}.`);
-    } else {
-        alert('Evento no encontrado.');
+    let carrito = JSON.parse(localStorage.getItem('tickets')) || [];
+
+    document.querySelectorAll('.btn-comprar').forEach(boton => {
+      boton.onclick = (e) => {
+        
+        const infoEvento = {
+            id: e.target.getAttribute('data-id'),
+            nombre: e.target.getAttribute('data-nombre'),
+            precio: parseFloat(e.target.getAttribute('data-precio')),
+            cantidad: 1
+        };
+        
+        agregarAlCarrito(infoEvento);
+      };
+    });
+    
+    function agregarAlCarrito(nuevoTicket) {
+
+      const existe = carrito.find(ticket => ticket.id === nuevoTicket.id);
+      if (existe) {
+        existe.cantidad += 1;
+      } else {
+        carrito.push(nuevoTicket);
+      }
+      localStorage.setItem('tickets', JSON.stringify(carrito));
+      alert(`Boleto para ${nuevoTicket.nombre} agregado a Mis Boletos.`);
     }
 }
-comprarBoletos(evento.id);
+ 
+
+
 
 function enviarFormulario() {
     alert('Formulario enviado. Nos pondremos en contacto contigo pronto.');
 }
-enviarFormulario();
 
 
 

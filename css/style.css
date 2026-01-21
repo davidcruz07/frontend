@@ -33,7 +33,7 @@ footer{
     color: #ffffff;
 }
 
-.btn{
+.btn, .btn-pagar, .btn-comprar{
     background-color: #145aa5;
     color: white;
     border: none;
@@ -48,7 +48,7 @@ footer{
 }
 
 
-.btn:hover{
+.btn:hover, .btn-pagar:hover, .btn-comprar:hover{
     background-color: #ffffff;
     color: black;
     transform: scale(1.005);
@@ -57,8 +57,8 @@ footer{
 
 #eventos {
     display: flex;
-    flex-wrap: wrap; /* Para que las tarjetas se pasen a la siguiente fila */
-    gap: 20px;       /* Espacio entre tarjetas */
+    flex-wrap: wrap;
+    gap: 20px;  
     justify-content: center;
 }
 
@@ -104,20 +104,19 @@ textarea {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+    box-sizing: border-box;
     font-size: 16px;
     transition: border-color 0.3s ease;
 }
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #1a5fb4; /* El azul de tu botón */
+    border-color: #1a5fb4;
 }
 
-/* Área de mensaje */
 textarea {
     height: 100px;
-    resize: vertical; /* Permite al usuario ajustar el alto */
+    resize: vertical;
 }
 
 

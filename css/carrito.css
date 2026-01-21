@@ -1,0 +1,29 @@
+#carrito {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.btn-eliminar {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.carrito-total {
+    text-align: right;
+    margin-top: 30px;
+    border-top: 2px solid #333;
+    padding-top: 20px;
+}
